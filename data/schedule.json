@@ -1,0 +1,56 @@
+[
+  {
+    "courseName": "eads",
+    "roomName": "distibuted",
+    "roomIndex": 0,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-08:10",
+    "timeEnd": "2022/12/02-10:00",
+    "maxSeats":196
+  },
+  {
+    "courseName": "ml",
+    "roomName": "cloud",
+    "roomIndex": 1,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-09:00",
+    "timeEnd": "2022/12/02-10:00",
+    "maxSeats": 225
+  },
+  {
+    "courseName": "advanced algo",
+    "roomName": "cmb",
+    "roomIndex": 2,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-10:00",
+    "timeEnd": "2022/12/02-11:00",
+    "maxSeats": 100
+  },
+  {
+    "courseName": "ml2",
+    "roomName": "ml",
+    "roomIndex": 3,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-12:00",
+    "timeEnd": "2022/12/02-13:00",
+    "maxSeats": 144
+  },
+  {
+    "courseName": "i2dl",
+    "roomName": "höörsal",
+    "roomIndex": 4,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-09:00",
+    "timeEnd": "2022/12/02-10:00",
+    "maxSeats": 100
+  },
+  {
+    "courseName": "distro2",
+    "roomName": "room",
+    "roomIndex": 5,
+    "dateFormat": "yyyy/MM/dd-HH:mm",
+    "timeStart": "2022/12/02-08:30",
+    "timeEnd": "2022/12/02-10:00",
+    "maxSeats": 196
+  }
+]

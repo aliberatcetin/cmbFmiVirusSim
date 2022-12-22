@@ -1,0 +1,149 @@
+#
+# Default settings for the simulation
+#
+
+## Scenario settings
+Scenario.name = fmi_virus_spreading
+Scenario.simulateConnections = true
+Scenario.updateInterval = 0.1
+# 43k ~= 12h
+Scenario.endTime = 43k
+
+ScheduledStudentMovement.gatePoints= data/GatePoints.wkt
+ScheduledStudentMovement.lectureHalls= data/lectureHalls.wkt
+ScheduledStudentMovement.nonLecturePoints= data/nonLecturePoints.wkt
+StudentScheduler.jsonScheduleFile = data/schedule.json
+
+
+firstinterface.type = SimpleBroadcastInterface
+# transmit speed of 2 Mbps = 250kBps
+firstinterface.transmitSpeed = 250k
+firstinterface.transmitRange = 10
+
+si.type = SimpleBroadcastInterface
+# transmit speed of 2 Mbps = 250kBps
+si.transmitSpeed = 250k
+si.transmitRange = 10
+
+
+Scenario.nrofHostGroups = 1
+
+# common settings for all groups
+Group.movementModel = ScheduledStudentMovement
+Group.router = EpidemicRouter
+Group.bufferSize = 5M
+Group.waitTime = 0, 120
+#All nodes have the firstinterface inteface
+Group.nrofInterfaces = 1
+Group.interface1 = firstinterface
+# walking speeds
+Group.speed = 0.5, 1.5
+#Group.msgTtl = 60
+
+Group.nrofHosts = 0
+Group.nrofApplications = 0
+
+
+Group1.groupID = p
+Group1.nrofHosts = 0
+
+Group2.groupID = q
+Group2.clusterCenter = 600, 100
+
+
+# The Tram groups
+Group4.groupID = r
+Group4.bufferSize = 50M
+Group4.movementModel = MapRouteMovement
+Group4.routeFile = data/cluster/22-19.49.wkt.txt
+Group4.routeType = 1
+Group4.waitTime = 10, 30
+Group4.speed = 3, 5
+Group4.nrofHosts = 5
+Group4.nrofInterfaces = 1
+Group4.interface1 = firstinterface
+
+# The Tram groups
+Group5.groupID = s
+Group5.bufferSize = 50M
+Group5.movementModel = ScheduledStudentMovement
+Group5.routeFile = data/cluster/22-19.49.wkt.txt
+Group5.routeType = 1
+Group5.waitTime = 10, 30
+Group5.speed = 3, 5
+Group5.nrofHosts = 5
+Group5.nrofInterfaces = 1
+Group5.interface1 = firstinterface
+
+## Map based movement -movement model specific settings
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = data/fmi2.wkt
+
+
+
+## Movement model settings
+# seed for movement models' pseudo random number generator (default = 0)
+MovementModel.rngSeed = 1
+# World's size for Movement Models without implicit size (width, height; meters)
+MovementModel.worldSize = 4500, 3400
+# How long time to move hosts in the world before real simulation
+MovementModel.warmup = 1000
+
+# how many reports to load
+Report.nrofReports = 1
+# length of the warm up period (simulated seconds)
+Report.warmup = 0
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = reports/
+# Report classes to load
+Report.report1 = MessageStatsReport
+
+## Optimization settings -- these affect the speed of the simulation
+## see World class for details.
+Optimization.connectionAlg = 2
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+
+## GUI settings
+
+# GUI underlay image settings
+GUI.UnderlayImage.fileName = data/fmi.jpeg
+# Image offset in pixels (x, y)
+GUI.UnderlayImage.offset = 64, 20
+# Scaling factor for the image
+GUI.UnderlayImage.scale = 1
+# Image rotation (radians)
+GUI.UnderlayImage.rotate = -0.015
+
+
+
+## Message creation parameters
+# How many event generators
+Events.nrof = 10
+# Class of the first event generator
+Events1.class = SingleMessageGenerator
+# (following settings are specific for the MessageEventGenerator class)
+# Creation interval in seconds (one new message every 25 to 35 seconds)
+Events1.interval = 100k,100k
+# Message sizes (50kB - 150kB)
+Events1.size = 50k,150k
+# range of message source/destination addresses
+Events1.hosts = 1,10
+Events1.toHosts = 1,10
+# Message ID prefix
+Events1.prefix = M
+
+
+Events2.class = SingleMessageGenerator
+# (following settings are specific for the MessageEventGenerator class)
+# Creation interval in seconds (one new message every 25 to 35 seconds)
+Events2.interval = 100k,100k
+# Message sizes (50kB - 150kB)
+Events2.size = 50k,150k
+# range of message source/destination addresses
+Events2.hosts = 4,10
+Events2.toHosts = 4,10
+# Message ID prefix
+Events2.prefix = M
+
